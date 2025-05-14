@@ -1,0 +1,53 @@
+body{
+    font-family: "Be Vietnam Pro",sans-serif;
+    font-size: 0.8125rem;
+    background-color: #f4f5f8;
+}
+a {
+    text-decoration: none;
+}
+.logo-txt{
+    text-transform: none;
+}
+.footer {
+    z-index: 3;
+}
+.input-group-text{
+    line-height: 1.35;
+}
+.input-group-prepend .input-group-text{
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: transparent;
+    border-right: 0px;
+    min-height: 39px;
+}
+.input-group-append .input-group-text{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: transparent;
+    border-left: 0px;
+    min-height: 39px;
+}
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
+    border-left: 0px;
+}
+.input-group>:not(:last-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
+    border-right: 0px;
+}
+.input-group, .form-control{
+    font-size: 14px!important;
+}
+.input-group-text{
+    font-size: 14px;
+}
+svg{
+    width: 20px; 
+}
+.btn{
+    font-size: 14px;
+}
+#loginform-recaptcha-recaptcha-loginform > div {
+    margin-left: auto;
+    margin-right: auto;
+}
