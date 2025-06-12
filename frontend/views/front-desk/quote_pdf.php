@@ -12,14 +12,14 @@ $counter = 1;
     h1, h2 { color: #333; }
     table { width: 100%; border-collapse: collapse; margin-top: 10px; }
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    th { background-color: #f4f4f4; }
+    th { background-color:rgb(71, 184, 131); color: #FFFFFF;}
     .footer, .notes { margin-top: 20px; font-size: 0.9em; }
     .section { margin-top: 40px; }
   </style>
 </head>
 <body>
 
-  <h1>Quote # </h1>
+  <h1 style="color:rgb(71, 184, 131)">Quote # </h1>
   <p><strong>Quote Date:</strong> <?= date('Y-m-d') ?><br>
      <strong>Reference#:</strong> <br>
      <strong>Sales Person:</strong> <?= htmlspecialchars($agent->name) . ' ' . htmlspecialchars($agent->lastname) ?></p>
@@ -53,18 +53,27 @@ $counter = 1;
     </thead>
     <tbody>      
       <tr>
+        <?php if($device->branch === "UMP"){ ?>
+        <td>0</td>
+        <td>ASSESSMENT FEE</td>
+        <td>1.00</td>
+        <td>R120.00</td>
+        <td>0.00</td>
+        <td>R120.00</td>
+        <?php }else{ ?>
         <td>0</td>
         <td>ASSESSMENT FEE</td>
         <td>1.00</td>
         <td>R150.00</td>
         <td>0.00</td>
         <td>R150.00</td>
+        <?php } ?>
       </tr>
 
       <?php foreach($items as $item){ ?>
       <tr>
         <td><?= $counter ?></td>
-        <td><?= htmlspecialchars($item->diagnosed_problem) ?></td>
+        <td><?= strtoupper(htmlspecialchars($item->proposed_solution)) ?></td>
         <td>1.00</td>
         <td>R<?= number_format($item->cost, 2) ?></td>
         <td>0.00</td>
@@ -78,7 +87,9 @@ $counter = 1;
   </table>
 
   <p><strong>Sub Total:</strong> R<?= number_format($total, 2) ?><br>
-     <strong>Grand Total:</strong> R<?= number_format($total + 150, 2) ?><br>
+     <?php if($device->branch === "Nelspruit"){?><strong>Grand Total:</strong> R<?=($device->assessment_fee === "Paid") ? number_format($total, 2) : number_format($total + 150, 2) ?><br>
+     <?php }else{?><strong>Grand Total:</strong> R<?=($device->assessment_fee === "Paid") ? number_format($total, 2) : number_format($total + 120, 2) ?><br>
+      <?php } ?>
      <strong>Items in Total:</strong> <?= $counter ?></p>
 
   <div class="notes">

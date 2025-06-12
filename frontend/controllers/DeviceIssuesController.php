@@ -26,19 +26,62 @@ class DeviceIssuesController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        return [
+            'access' => [
+                'class' =>  AccessControl::className(),
+                'ruleConfig' => [
+                    'class' => AccessRule::className(),
+                ],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => [                            
+                            User::TECHNICIAN,
+                        ],
                     ],
                 ],
-            ]
-        );
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                                        
+                ],
+            ],
+        ];
+    }
+    public function beforeAction($action)
+    {
+        if (!\Yii::$app->user->isGuest) {
+            $session = Yii::$app->getSession();
+            $settings = \app\models\SysSettings::findOne(1);
+            $authtime = 3600;
+            if(!empty($settings->inactive_time)){
+                $authtime = (int)$settings->inactive_time*60;
+            }
+            \Yii::$app->user->authTimeout = $authtime;
+            $timetologout = $session->get(\Yii::$app->user->authTimeoutParam);
+            if($timetologout >= time()){
+                if (\Yii::$app->user->authTimeout !== null) {
+                    $session->set(\Yii::$app->user->authTimeoutParam, time() + \Yii::$app->user->authTimeout);
+                }
+                if (\Yii::$app->user->absoluteAuthTimeout !== null) {
+                    $session->set(\Yii::$app->user->absoluteAuthTimeoutParam, time() + \Yii::$app->user->absoluteAuthTimeout);
+                }
+            }
+            if($timetologout <= time()){
+                $this->redirect(['site/logout']);
+                return false;
+            }
+        }
+        if(\Yii::$app->user->isGuest){
+            $this->redirect(['site/login']);
+            return false;
+        }
+        
+        return true;
     }
 
     /**

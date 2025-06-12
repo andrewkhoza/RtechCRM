@@ -1,8 +1,8 @@
 {
-    "name": "zilo/jozi-kitchens",
-    "description": "Jozi Kitchens",
-    "keywords": ["zilo", "bespoke", "development", "custom development", "zilo Personalisation"],
-    "homepage": "https://zilo.co.za/",
+    "name": "rtech/relevant-technologies",
+    "description": "Rtech CRM",
+    "keywords": ["rtech", "repairs"],
+    "homepage": "https://rtechsa.com/",
     "type": "project",
     "license": "BSD-3-Clause",
     "support": {

@@ -19,9 +19,9 @@ AppAsset::register($this);
     <link rel="alternate" href="http://<?= Yii::$app->params['alternateURL'] ?>/" hreflang="en-za" />
     
     <?php $this->head() ?>
-    <!-- <link rel="shortcut icon" href="<?= \Yii::$app->request->baseurl ?>/images/favicon.ico" type="image/x-icon" /> -->
-    <!-- <link rel="icon" type="image/png" sizes="32x32" href="<?= \Yii::$app->request->baseurl ?>/images/icon32x32.png"> -->
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="<?= \Yii::$app->request->baseurl ?>/images/icon16x16.png"> -->
+    <link rel="shortcut icon" href="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <link href="<?= \Yii::$app->request->baseurl ?>/lib/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />

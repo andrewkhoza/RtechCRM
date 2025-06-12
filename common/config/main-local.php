@@ -2,14 +2,13 @@
     use \yii\web\Request;
     
 if(!$Yiirunconsole){
-    $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
-    
+    $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());    
     
     return [
         'components' => [
 
             /*  */
-            //localhost
+            // localhost
             'db' => [
                 'class' => 'yii\db\Connection',
                 'dsn' => 'mysql:host=localhost;dbname=rtechsa',
@@ -17,6 +16,13 @@ if(!$Yiirunconsole){
                 'password' => '',
                 'charset' => 'utf8',
             ],
+            // 'db' => [
+            //     'class' => 'yii\db\Connection',
+            //     'dsn' => 'mysql:host=localhost;dbname=rtechsa_repairs',
+            //     'username' => '',
+            //     'password' => '',
+            //     'charset' => 'utf8',
+            // ],
                  
             
             'user' => [
@@ -41,6 +47,19 @@ if(!$Yiirunconsole){
                   
                     '<controller:[\w\-]+>/<action:[\w\-]+>/<id:\d+>' => '<controller>/<action>',
               ]
+            ],
+            'mailer' => [
+                'class' => \yii\symfonymailer\Mailer::class,
+                'viewPath' => '@common/mail',
+                'useFileTransport' => false,
+                'transport' => [
+                    'scheme' => 'smtp',
+                    'host' => '127.0.0.1',
+                    'username' => 'ScannerServer',
+                    'password' => 'Common@666',
+                    'port' => 25,
+                    'auth_mode' => true,
+                ],
             ],            
             'response' => [
                 'formatters' => [
@@ -84,16 +103,24 @@ if(!$Yiirunconsole){
     
     
 }else{
-    $baseUrl = '/';
+    $baseUrl = '/';  
+
     return [
         'components' => [
 
             /*  */
             //localhost
+            // 'db' => [
+            //     'class' => 'yii\db\Connection',
+            //     'dsn' => 'mysql:host=localhost;dbname=rtechsa',
+            //     'username' => 'root',
+            //     'password' => '',
+            //     'charset' => 'utf8',
+            // ],
             'db' => [
                 'class' => 'yii\db\Connection',
-                'dsn' => 'mysql:host=localhost;dbname=rtechsa',
-                'username' => 'root',
+                'dsn' => 'mysql:host=localhost;dbname=rtechsa_repairs',
+                'username' => '',
                 'password' => '',
                 'charset' => 'utf8',
             ],

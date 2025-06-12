@@ -16,19 +16,76 @@ class ClientsController extends Controller
     /**
      * @inheritDoc
      */
-    public function behaviors()
+
+     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        if (!\Yii::$app->user->isGuest) {
+            $user = Yii::$app->user;
+            if ($user->identity->role == 10) { //admin
+                $rules = ['index'];
+            }else {
+                $rules = [''];
+            }
+        } else {
+            $rules = ['']; // not logged in
+        }
+        
+        //==================================
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout',],
+                'rules' => [
+                    [
+                        'actions' => [''],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['logout', 'signup','ajaxpost'],
+                        'allow' => true,
+                        'roles' => ['@'],
                     ],
                 ],
-            ]
-        );
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'ajaxpost' => ['post'],
+                ],
+            ],
+        ];
+    }
+    public function beforeAction($action)
+    {
+        if (!\Yii::$app->user->isGuest) {
+            $session = Yii::$app->getSession();
+            $settings = \app\models\SysSettings::findOne(1);
+            $authtime = 3600;
+            if(!empty($settings->inactive_time)){
+                $authtime = (int)$settings->inactive_time*60;
+            }
+            \Yii::$app->user->authTimeout = $authtime;
+            $timetologout = $session->get(\Yii::$app->user->authTimeoutParam);
+            if($timetologout >= time()){
+                if (\Yii::$app->user->authTimeout !== null) {
+                    $session->set(\Yii::$app->user->authTimeoutParam, time() + \Yii::$app->user->authTimeout);
+                }
+                if (\Yii::$app->user->absoluteAuthTimeout !== null) {
+                    $session->set(\Yii::$app->user->absoluteAuthTimeoutParam, time() + \Yii::$app->user->absoluteAuthTimeout);
+                }
+            }
+            if($timetologout <= time()){
+                $this->redirect(['site/logout']);
+                return false;
+            }
+        }
+        if(\Yii::$app->user->isGuest){
+            $this->redirect(['site/login']);
+            return false;
+        }
+        
+        return true;
     }
 
     /**

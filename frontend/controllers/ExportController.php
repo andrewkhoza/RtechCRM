@@ -13,6 +13,7 @@ use app\models\UserInfo;
 use app\models\Clients;
 use app\models\ContactUs;
 use app\models\BookedDevices;
+use app\models\Quotations;
 use app\models\search\UserSearch;
 use yii\web\UploadedFile;
 use yii\web\BadRequestHttpException;
@@ -37,7 +38,8 @@ class ExportController extends Controller
                     [
                         'allow' => true,
                         'roles' => [
-                            User::ROLE_ADMIN,
+                            User::ADMIN,
+                            User::MANAGER,
                         ],
                     ],
                 ],
@@ -102,6 +104,7 @@ public function actionQuotePdf($id)
     $client = Clients::findOne(['id'=>$device->client_id]);
     $agent = UserInfo::findOne(['id'=>$device->checkin_agent_id]);
     $items = DiagnosedIssues::findAll(['device_id'=>$device->id]);
+    $quotation = new Quotations();
    
     // Render HTML view into a variable
     $html = $this->renderPartial('//front-desk/quote_pdf', [
@@ -116,17 +119,23 @@ public function actionQuotePdf($id)
     $mpdf = new Mpdf();
     $mpdf->WriteHTML($html);
     
-    $filename = "Quote_" . $client->cell . ".pdf";
-    $savePath = Yii::getAlias('@webroot/quotes/' . $filename); // Ensure this folder exists and is writable
+    $filename = "Quote_".$device->id.$client->name.date('Y-m-d').".pdf";
+    $filepath = Yii::getAlias('@webroot/quotes/' . $filename); // Ensure this folder exists and is writable
+    $quotation->device_id = $device->id;
+    $quotation->path = $filename;
+    $quotation->save();
     
     // Save PDF file to the server
-    $mpdf->Output($savePath, \Mpdf\Output\Destination::FILE);
+    $mpdf->Output($filepath);
     
     // Send the file to browser for download
-    return Yii::$app->response->sendFile($savePath, $filename, [
-        'mimeType' => 'application/pdf',
-        'inline' => false, // change to true if you want it to open in browser
-    ]);
+    $email = new \frontend\models\Mails();
+    $return = $email->sendQuotation(12, $client->id, $quotation->id);
+
+    Yii::$app->getSession()->setFlash('success', 'Email with the quotation has been succesfully sent to client.');
+    return $this->redirect(['//technicians/quoted']);
+
+
 
 }
 

@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-12">
 
             <p>
-                <?= Html::a('Book In A Device ', ['booking-device'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('Book In A Device ', ['booking-device'], ['class' => 'btn btn-primary']) ?>
                 <!-- <span style="float:right;">
                     <?= Html::a('<i class="fa fa-download"></i>', ['//export/super-admins'], ['target' => '_blank']) ?>
                 </span> -->

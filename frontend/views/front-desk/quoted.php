@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-12">
 
             <p>
-                <?= Html::a('Book In A Device ', ['booking-device'], ['class' => 'btn btn-success']) ?>
+                <?= Html::a('Book In A Device ', ['booking-device'], ['class' => 'btn btn-primary']) ?>
                 <!-- <span style="float:right;">
                     <?= Html::a('<i class="fa fa-download"></i>', ['//export/super-admins'], ['target' => '_blank']) ?>
                 </span> -->
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 return Html::a('<i class="fa fa-thumbs-up" aria-hidden="true"></i>', ['approved-status','id'=> $model->id],['title'=>'Approved']);
                             },
                             'download' => function ($url, $model, $key) {
-                                return Html::a('<i class="fa fa-download" aria-hidden="true"></i>', ['export/quote-pdf','id'=> $model->id],['title'=>'Download Quotation']);
+                                return Html::a('<i class="fa fa-download" aria-hidden="true"></i>', ['download-pdf','id'=> $model->id],['title'=>'Download Quotation']);
                             },
                             'write-off' => function ($url, $model, $key) {
                                 return Html::a('<i class="fa fa-ban" aria-hidden="true"></i>', ['write-off/reason', 'id' => $model->id], [

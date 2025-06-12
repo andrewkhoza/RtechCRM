@@ -3,9 +3,9 @@
          <div class="d-flex">
              <!-- LOGO -->
              <div class="navbar-brand-box">
-                 <!-- <a href="<?= \Yii::$app->request->baseurl ?>/" class="logo logo-dark">
+                 <a href="<?= \Yii::$app->request->baseurl ?>/" class="logo logo-dark">
                      <span class="logo-sm">
-                         <img src="<?= \Yii::$app->request->baseurl ?>/images/logo.png" alt="" height="30">
+                         <img src="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png" alt="" height="30">
                      </span>
                      <span class="logo-lg">
                          <img src="<?= \Yii::$app->request->baseurl ?>/images/Primary-Logo-Black.png" alt="" height="65">
@@ -14,12 +14,12 @@
 
                  <a href="<?= \Yii::$app->request->baseurl ?>/" class="logo logo-light">
                      <span class="logo-sm">
-                         <img src="<?= \Yii::$app->request->baseurl ?>/images/logo.png" alt="" height="30">
+                         <img src="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png" alt="" height="30">
                      </span>
                      <span class="logo-lg">
-                         <img src="<?= \Yii::$app->request->baseurl ?>/images/Primary-Logo-Black.png" alt="" height="65">
+                         <img src="<?= \Yii::$app->request->baseurl ?>/images/rtech-logo-1.png" alt="" height="65">
                      </span>
-                 </a> -->
+                 </a>
              </div>
 
              <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">

@@ -1,4 +1,4 @@
 <?php
 return [
-    'adminEmail' => 'info@zilo-interns.co.za',
+    'adminEmail' => 'info@rtechsa.com',
 ];

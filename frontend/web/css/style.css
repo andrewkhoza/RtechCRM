@@ -8,47 +8,47 @@ body[data-topbar=dark] #page-topbar {
     border: none;
     -webkit-box-shadow: 0 0.2rem 0.5rem rgb(18 38 63 / 30%);
     box-shadow: 0 0.2rem 0.5rem rgb(18 38 63 / 30%);
-    background: rgb(25, 146, 35);
-    background: linear-gradient(90deg,rgb(25, 146, 35) 31%, rgb(25, 146, 35) 100%);
+    background: black;
+    background: linear-gradient(90deg,#dee2e6 100%);
 }
 body[data-topbar=dark] .navbar-brand-box {
-    background-color: rgb(25, 146, 35);
-    border-color: rgb(25, 146, 35);
+    background-color: #dee2e6;
+    border-color: #dee2e6;
 }
 a {
-    color: rgb(25, 146, 35);
+    /* color: black; */
     text-decoration: none;
 }
 a:hover {
-    color: rgb(25, 146, 35);
+    color: black!important;
 }
 #sidebar-menu ul li a:hover {
-    color: rgb(25, 146, 35);
+    color: black!important;
 }
 #sidebar-menu ul li a:hover svg {
-    color: rgb(25, 146, 35);
+    color: black!important;
 }
 #sidebar-menu ul li ul.sub-menu li a:hover {
-    color: rgb(25, 146, 35);
+    color: black!important;
 }
 .mm-active>a {
-    color: rgb(25, 146, 35)!important;
+    color: black!important;
 }
 
 .mm-active>a svg {
-    color: rgb(25, 146, 35)!important;
+    color: black!important;
 }
 .mm-active .active {
-    color: rgb(25, 146, 35)!important;
+    color: black!important;
 }
 .mm-active .active svg {
-    color: rgb(25, 146, 35)!important;
+    color: black!important;
 }
 #sidebar-menu ul li a:hover i {
-    color: rgb(25, 146, 35);
+    color: black!important;
 }
 .mm-active>a i {
-    color: rgb(25, 146, 35)!important;
+    color: black!important;
 }
 .main-content .page-content:before{
     content: "";
@@ -200,6 +200,7 @@ a:hover {
 }
 .btn{
     font-size: 14px;
+    /* color: #dee2e6!important; */
 }
 
 

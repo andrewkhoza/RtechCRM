@@ -145,36 +145,36 @@ class AdminController extends Controller
             'model' => $model,
         ]);
     }
-    // public function actionChangeuserpassword($id){
+    public function actionChangeuserpassword($id){
 
-    //         $this->layout = 'admin';        
+            $this->layout = 'admin';        
         
-    //     $info = UserInfo::findOne(['user_id'=>$id]);
-    //     if(!empty($info)){
-    //         $model = new \frontend\models\ResetPasswordFormAdmin(NULL,NULL,$info->user_id);
-    //         // if (Yii::$app->request->isAjax){
-    //         //     Yii::$app->response->format = 'json';
-    //         //     $model->load(Yii::$app->request->post());
+        $info = UserInfo::findOne(['user_id'=>$id]);
+        if(!empty($info)){
+            $model = new \frontend\models\ResetPasswordFormAdmin(NULL,NULL,$info->user_id);
+            if (Yii::$app->request->isAjax){
+                Yii::$app->response->format = 'json';
+                $model->load(Yii::$app->request->post());
 
-    //         //     return \kartik\widgets\ActiveForm::validate($model);
-    //         // }
-    //         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
-    //             $temp = Yii::$app->request->post();
-    //             $user = User::findOne($info->user_id);
-    //             $user->save(false);
+                return \kartik\widgets\ActiveForm::validate($model);
+            }
+            if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
+                $temp = Yii::$app->request->post();
+                $user = User::findOne($info->user_id);
+                $user->save(false);
 
-    //             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
+                Yii::$app->getSession()->setFlash('success', 'New password was saved.');
 
-    //             if($user->role == 10){
-    //                 return $this->redirect(['admin-index']);
-    //             }
-    //         }
+                if($user->role == 10){
+                    return $this->redirect(['admin-index']);
+                }
+            }
 
-    //         return $this->render('users/resetPassword', [
-    //             'model' => $model,
-    //         ]);
-    //     }
-    // }
+            return $this->render('users/resetPassword', [
+                'model' => $model,
+            ]);
+        }
+    }
     
     
     public function actionAdminIndex()
@@ -221,7 +221,7 @@ class AdminController extends Controller
                 $return = $email->sendEmail(44, 1);*/
 
                 Yii::$app->getSession()->setFlash('success', 'User Saved.');
-                return $this->redirect(['index']);
+                return $this->redirect(['dashboard']);
             }
             
         }

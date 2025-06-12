@@ -16,10 +16,10 @@ $this->params['topmenu'] = 'Log In';
             <div class="w-100">
                 <div class="d-flex flex-column h-100">
                     <div class="mb-2 mb-md-3 text-center">
-                        <!-- <a href="<?= \Yii::$app->request->baseurl ?>/" class="d-block auth-logo"> -->
-                            <!-- <img src="<?= \Yii::$app->request->baseurl ?>/images/logo.png" alt="" height="100"> -->
+                        <a href="<?= \Yii::$app->request->baseurl ?>/" class="d-block auth-logo">
+                            <img src="<?= \Yii::$app->request->baseurl ?>/images/rtech-logo-1.png" alt="" height="100">
                             <br/>
-                            <span class="logo-txt"><h1><b>Relevant Technologies</b></h1></span>
+                            <!-- <span class="logo-txt"><h1><b>Relevant Technologies</b></h1></span> -->
                         </a>
                     </div>
                     <div class="auth-content my-auto">

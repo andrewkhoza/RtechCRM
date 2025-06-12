@@ -36,6 +36,7 @@ class BookedDevicesController extends Controller
                         'allow' => true,
                         'roles' => [
                             User::ADMIN,
+                            User::MANAGER,
                             User::FRONT_DESK,
                         ],
                     ],

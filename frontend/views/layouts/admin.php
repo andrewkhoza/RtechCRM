@@ -31,9 +31,9 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <link rel="alternate" href="<?= Yii::$app->params['mainUrlFull'] ?>" hreflang="en-za" />
     <?php $this->head() ?>
-    <!-- <link rel="shortcut icon" href="<?= \Yii::$app->request->baseurl ?>/images/favicon.ico" type="image/x-icon" /> -->
-    <!-- <link rel="icon" type="image/png" sizes="32x32" href="<?= \Yii::$app->request->baseurl ?>/images/icon32x32.png"> -->
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="<?= \Yii::$app->request->baseurl ?>/images/icon16x16.png"> -->
+    <link rel="shortcut icon" href="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png" type="image/x-icon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= \Yii::$app->request->baseurl ?>/images/title-favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link href="<?= \Yii::$app->request->baseurl ?>/lib/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
@@ -42,6 +42,8 @@ AppAsset::register($this);
     <link href="<?= \Yii::$app->request->baseurl ?>/css/admin/icons.min.css" rel="stylesheet" type="text/css" />
     <link href="<?= \Yii::$app->request->baseurl ?>/css/admin/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
     <link href="<?= \Yii::$app->request->baseurl ?>/css/style.css" id="app-style" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     
     
     
@@ -77,6 +79,7 @@ AppAsset::register($this);
     
     <!--<script src="<?= \Yii::$app->request->baseurl ?>/lib/jquery/jquery.min.js"></script>-->
     <!--<script src="<?= \Yii::$app->request->baseurl ?>/lib/bootstrap/js/bootstrap.bundle.min.js"></script>-->
+    <!-- In your Yii2 view file -->
     <script src="<?= \Yii::$app->request->baseurl ?>/lib/metismenu/metisMenu.min.js"></script>
     <script src="<?= \Yii::$app->request->baseurl ?>/lib/simplebar/simplebar.min.js"></script>
     <script src="<?= \Yii::$app->request->baseurl ?>/lib/node-waves/waves.min.js"></script>

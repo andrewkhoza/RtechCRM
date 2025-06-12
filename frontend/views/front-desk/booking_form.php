@@ -8,13 +8,19 @@ use kartik\widgets\DatePicker;
 use kartik\widgets\Select2;
 use common\models\User;
 use app\models\UserInfo;
+use app\models\Clients;
+use yii\web\JsExpression;
 use kartik\switchinput\SwitchInput;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Divisions */
 
-
 $this->title = 'Book In A Device | '.Yii::$app->params['siteName'];
+
+$clientList = ArrayHelper::map(Clients::find()->all(), 'id', function($client){
+                                return $client->name." ".$client->lastname." ".$client->cell;
+                            });
+$clientList['__add_new__'] = '+ New Client';
 ?>
 
 <div class="page-breadcrumb">
@@ -53,23 +59,52 @@ $this->title = 'Book In A Device | '.Yii::$app->params['siteName'];
 
                 <h3>Client Details</h3>
                 <div class="row">
-                    <div class="col-md-6 col-12">
-                        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+                    <div class="col-md-6 col-12" id="client-select-wrapper">
+                        <?= $form->field($model, 'id')->label('Client Name')->widget(Select2::classname(), [
+                            'data' => $clientList,
+                            'options' => ['placeholder' => 'Select a client...', 'id' => 'client-name'],
+                            'pluginOptions' => [
+                                'allowClear' => true,
+                                'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                                'matcher' => new JsExpression(<<<JS
+                                    function(params, data) {
+                                        if ($.trim(params.term) === '') {
+                                            return data;
+                                        }
+
+                                        // Always show 'Add New Client'
+                                        if (data.id === '__add_new__') {
+                                            return data;
+                                        }
+
+                                        // Normal search behavior
+                                        if (data.text.toLowerCase().indexOf(params.term.toLowerCase()) > -1) {
+                                            return data;
+                                        }
+
+                                        return null;
+                                    }
+                                JS),
+                            ],
+                        ]) ?>
                     </div>
-                    <div class="col-md-6 col-12">
-                        <?= $form->field($model, 'lastname')->textInput() ?>
+                    <div class="col-md-6 col-12" id="client-input-wrapper" style="display:none;">
+                        <?= $form->field($model, 'name')->textInput(['id' => 'client-name-input','disabled' => true]) ?>
+                    </div>
+                    <div class="col-md-6 col-12" id="lastname">
+                        <?= $form->field($model, 'lastname')->textInput(['id'=>'lastname']) ?>
                     </div>
                 </div>
                 <br/>
                 <div class="row">
-                    <div class="col-md-4 col-6">
-                    <?= $form->field($model, 'email')->textInput()  ?>
+                    <div class="col-md-4 col-6" id="email">
+                    <?= $form->field($model, 'email')->textInput(['id'=>'email'])  ?>
                     </div>
-                    <div class="col-md-4 col-6">
-                    <?= $form->field($model, 'cell')->textInput()  ?>
+                    <div class="col-md-4 col-6" id="cell">
+                    <?= $form->field($model, 'cell')->textInput(['id'=>'cell'])  ?>
                     </div>
-                    <div class="col-md-4 col-6">
-                    <?= $form->field($model, 'alt_cell')->textInput()  ?>
+                    <div class="col-md-4 col-6" id="alt_cell">
+                    <?= $form->field($model, 'alt_cell')->textInput(['id'=>'alt_cell'])  ?>
                     </div>
                 </div>
                 <br/>               
@@ -160,11 +195,11 @@ $this->title = 'Book In A Device | '.Yii::$app->params['siteName'];
                 <br/>
                 <hr/>
                 <br/>
-                 <h3>Assigned Technician</h3>
+                 <h3>Technician Information</h3>
                 <div class="row">
-                    <div class="col-md-4 col-6">
+                    <div class="col-md-2 col-6">
                     <?php
-                        echo $form->field($model2, 'technician_id')->label('Technician Name')->widget(Select2::classname(), [
+                        echo $form->field($model2, 'technician_id')->label('Assign Technician')->widget(Select2::classname(), [
                             'data' => ArrayHelper::map(UserInfo::find()
                                 ->joinWith('user')
                                 ->where(['user.role'=>30])
@@ -177,6 +212,31 @@ $this->title = 'Book In A Device | '.Yii::$app->params['siteName'];
                         ], ]);
                         ?>
                     </div>
+                   <?php
+
+                    $technicianDeviceCount = [];
+
+                    // Count devices per technician
+                    foreach ($devices as $device) {
+                        $technician = UserInfo::findOne(['id' => $device->technician_id]);
+                        if ($technician) {
+                            $name = $technician->name;
+                            if (!isset($technicianDeviceCount[$name])) {
+                                $technicianDeviceCount[$name] = 0;
+                            }
+                            $technicianDeviceCount[$name]++;
+                        }
+                    }
+                    ?>
+
+                    <?php foreach ($technicianDeviceCount as $technicianName => $count){ ?>
+                        <div class="col-md-2">
+                            <div class="form-control mt-4">
+                                <?= Html::encode($technicianName) ?> : <?= $count ?>
+                            </div>
+                        </div>
+                    <?php } ?>
+                     
                 </div>
                 <br/>
 
@@ -208,7 +268,7 @@ $this->title = 'Book In A Device | '.Yii::$app->params['siteName'];
                 <br/> 
 
                 <div class="form-group">
-                    <?= Html::a( 'Cancel', \Yii::$app->request->baseurl.'/front-desk/index', ['class' => 'btn btn-default cancelled', 'style'=>"margin-right: 8px;"]); ?>
+                    <?= Html::a( 'Cancel', \Yii::$app->request->baseurl.'/front-desk/diagnosis', ['class' => 'btn btn-default cancelled', 'style'=>"margin-right: 8px;"]); ?>
                     <?= Html::submitButton('Save', ['class' => 'btn btn-primary', 'style'=>"margin-right: 8px;"]) ?>
                 </div>
 
@@ -221,3 +281,58 @@ $this->title = 'Book In A Device | '.Yii::$app->params['siteName'];
         </div>
     </div>
 </div>
+<?php
+$this->registerJs("
+    $('#client-name').on('change', function() {
+        if ($(this).val() === '__add_new__') {
+            $('#client-select-wrapper').hide();
+            $('#client-input-wrapper').show();
+            if ($('#client-input-wrapper').is(':visible')) {
+                $('#client-name-input').prop('disabled', false); // enable input when shown
+                $('#client-name').val(null);
+            }
+        }
+    });
+
+    $('#client-name').change(function() {
+        var clientId =  $(this).val();
+
+        // Make an Ajax request to fetch clients data
+        $.ajax({
+            url: '" . \Yii::$app->request->baseUrl ."/front-desk/fetch-client', // URL to fetch product data
+            method: 'GET',
+            data: { id: clientId }, // Pass the client ID as a parameter
+            dataType: 'Json',
+            success: function(response) {
+                                                     
+                                   
+                var response2 = JSON.parse(response);
+
+                console.log(response2);
+
+                // Check if the request was successful
+                if (response.error) {
+                    alert(response.error)
+                }else{
+                
+                    var lastname = response2.data.lastname;
+                    var email = response2.data.email;
+                    var cell = response2.data.cell;
+                    var alt_cell = response2.data.alt_cell;
+
+                    $('#lastname input').val(lastname);
+                    $('#email input').val(email);
+                    $('#cell input').val(cell);
+                    $('#alt_cell input').val(alt_cell);
+                }
+            },
+            error: function(xhr, status, error) {
+                // Handle error if Ajax request fails
+                console.error('Ajax request failed:', error);
+            }
+        });
+
+
+    });
+");
+?>

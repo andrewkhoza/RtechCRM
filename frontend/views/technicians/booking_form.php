@@ -69,7 +69,7 @@ $this->title = 'Repairs Status | '.Yii::$app->params['siteName'];
 
                     <div class="panel panel-default">
                         <div class="panel-heading mb-2">
-                            <button type="button" class="pull-right add-item btn btn-success btn-xs"><h6>Add Issue</h6></button>
+                            <button type="button" class="pull-right add-item btn btn-primary btn-xs"><h6>Add Issue</h6></button>
                         </div>
                         
                         <div class="panel-body container-items">
@@ -84,17 +84,27 @@ $this->title = 'Repairs Status | '.Yii::$app->params['siteName'];
                                                         <h3 class="mb-3">Device Issue</h3>
                                                     </div>
                                                     <div class="row  mb-3">
-                                                        <div class="col-md-7 col-6">
-                                                            <?= $form->field($issue,"[{$index}]diagnosed_problem")->textInput()
+                                                        <div class="col-md-9 col-8">
+                                                            <?= $form->field($issue,"[{$index}]diagnosed_problem")->textArea(['rows'=>3])
                                                             ?>
                                                         </div> 
+                                                    </div> 
+                                                    <div class="row  mb-3"> 
+                                                        <div class="col-md-9 col-8">
+                                                            <?= $form->field($issue,"[{$index}]proposed_solution")->textArea(['rows'=>3])
+                                                            ?>
+                                                        </div>   
+                                                    </div>  
+                                                    <div class="row  mb-3"> 
                                                         <div class="col-md-4 col-6">
                                                             <?= $form->field($issue,"[{$index}]cost")->textInput()
                                                             ?>
-                                                        </div>                                          
+                                                        </div>   
+                                                    </div>  
+                                                    <div class="row  mb-3">  
                                                         <div class="col-md-1 mt-4 text-end col-6 panel-heading " style="float: left;">
                                                             <button type="button" class="pull-right remove-item btn btn-danger btn-xs "  ><i class="fa fa-minus"></i></button>                                                            
-                                                        </div>
+                                                        </div>                                        
                                                     </div>  
                                                     <br/>
                                                     <hr/>

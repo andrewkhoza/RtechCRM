@@ -53,10 +53,10 @@ $this->title = 'Device CheckList | '.Yii::$app->params['siteName'];
                  <br/>
                  <?php if($model->type === "Laptop"){ ?>              
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Wifi
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data1')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
@@ -64,293 +64,362 @@ $this->title = 'Device CheckList | '.Yii::$app->params['siteName'];
                             ]
                         ])->label(false); ?>
                     </div>                                   
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data1')->textInput()->label(false); ?>
+                    </div>                                   
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Bluetooth
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data2')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
+                    </div>  
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data2')->textInput()->label(false); ?>
                     </div>                                   
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         DVD/CD Drive
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data3')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
+                    </div>  
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data3')->textInput()->label(false); ?>
                     </div>                                   
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Ports
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data4')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>     
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data4')->textInput()->label(false); ?>
+                    </div>                                
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Battery
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data5')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
+                    </div>  
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data5')->textInput()->label(false); ?>
                     </div>                                   
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Charging(100%)
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data6')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div> 
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data6')->textInput()->label(false); ?>
+                    </div>                                    
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Keyboard
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data7')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div> 
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data7')->textInput()->label(false); ?>
+                    </div>                                    
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         HDD/SSD
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data8')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>    
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data8')->textInput()->label(false); ?>
+                    </div>                                 
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Screen
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data9')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
+                    </div>  
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data9')->textInput()->label(false); ?>
                     </div>                                   
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Cracks
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data10')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>   
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data10')->textInput()->label(false); ?>
+                    </div>                                  
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Scratches
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data16')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>       
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data16')->textInput()->label(false); ?>
+                    </div>                              
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Clean
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data11')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div> 
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data11')->textInput()->label(false); ?>
+                    </div>                                    
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Screws
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data12')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>     
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data12')->textInput()->label(false); ?>
+                    </div>                                
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Camera
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data13')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>   
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data13')->textInput()->label(false); ?>
+                    </div>                                  
                 </div>                
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Hinges
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data14')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>    
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data14')->textInput()->label(false); ?>
+                    </div>                                 
                 </div>                
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Sound
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data15')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>     
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data15')->textInput()->label(false); ?>
+                    </div>                                
                 </div>                
                 <?php }else if($model->type === "Phone"){ ?>
                     <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Camera
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data1')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>    
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data1')->textInput()->label(false); ?>
+                    </div>                                 
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Ports
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data2')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>        
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data2')->textInput()->label(false); ?>
+                    </div>                             
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Charging(100%)
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data3')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>         
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data3')->textInput()->label(false); ?>
+                    </div>                            
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Battery
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data4')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data4')->textInput()->label(false); ?>
+                    </div>                                     
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Screen
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data5')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
+                    </div>  
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data5')->textInput()->label(false); ?>
                     </div>                                   
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Sound
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data6')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>   
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data6')->textInput()->label(false); ?>
+                    </div>                                  
                 </div>
                 <div class="row">
-                    <div class="col-md-3 col-6">
+                    <div class="col-md-3 col-3">
                         Scratches
                     </div>
-                    <div class="col-md-3 col-6" style="text-align: right;">
+                    <div class="col-md-3 col-3" style="text-align: right;">
                         <?= $form->field($model2, 'data7')->widget(SwitchInput::classname(), [
                             'pluginOptions' => [
                                 'onText' => 'Yes',
                                 'offText' => 'No',
                             ]
                         ])->label(false); ?>
-                    </div>                                   
+                    </div>    
+                    <div class="col-md-3 col-3" style="text-align: right;">
+                        <?= $form->field($model3, 'data7')->textInput()->label(false); ?>
+                    </div>                                 
                 </div>
                 <?php } ?>                       
           

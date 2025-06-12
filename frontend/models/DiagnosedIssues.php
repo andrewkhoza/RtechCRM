@@ -30,10 +30,10 @@ class DiagnosedIssues extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['device_id', 'diagnosed_problem', 'cost'], 'required'],
+            [['device_id', 'diagnosed_problem','proposed_solution', 'cost'], 'required'],
             [['cost'], 'number'],
             [['device_id', 'cost'], 'integer'],
-            [['diagnosed_problem'], 'string', 'max' => 255],
+            [['diagnosed_problem','proposed_solution'], 'string', 'max' => 255],
         ];
     }
 
@@ -46,6 +46,7 @@ class DiagnosedIssues extends \yii\db\ActiveRecord
             'id' => 'ID',
             'device_id' => 'Device ID',
             'diagnosed_problem' => 'Diagnosed Problem',
+            'proposed_solution' => 'Proposed Solution',
             'cost' => 'Cost',
         ];
     }

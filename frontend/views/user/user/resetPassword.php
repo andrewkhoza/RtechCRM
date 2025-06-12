@@ -10,11 +10,6 @@ $usrinfo = app\models\UserInfo::findOne(['user_id' => \Yii::$app->user->id]);
 /* @var $form yii\bootstrap4\ActiveForm */
 /* @var $model \frontend\models\ResetPasswordForm */
 
-if($usrinfo->pass_changed == 0){
-    $this->title = 'First Time Login';
-}else{
-    $this->title = 'Reset Password';
-}
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="page-breadcrumb">
@@ -45,14 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="card card-body">
     
     <div class="row">
-        <div class="col-12">
-            <?php  ?>
-            <?php if($usrinfo->pass_changed == 0){ ?>
-                <br/>
-                <h6>For security reasons, we require you to change your password when you first sign in to your account.</h6>
-                <hr/>
-                <br/>
-            <?php } ?>
+        <div class="col-12">            
             <p>Please choose a new password:</p>
             <p style="font-size:12px"><i>*Password should be at least 6 characters in length and should include at least one upper case letter, and one number.</i></p>
             <!--<p style="font-size:12px"><i>*Password should be at least 6 characters in length and should include at least one upper case letter, one number, and one special character.</i></p>-->
@@ -91,11 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 
 
                 <div class="form-group">
-                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
-                    <?php if($usrinfo->pass_changed != 0){ ?>
-                        <a class="btn btn-info float-end" href="<?= \Yii::$app->request->baseurl ?>/user/security" style="cursor: pointer;">Back</a>
-                    <?php } ?>
-                    
+                    <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>   
                 </div>
             <?php ActiveForm::end(); ?>
 

@@ -39,12 +39,12 @@ body[data-layout-mode="dark"] {
   height: 70px;
   padding: 0 24px 0 0; }
   .navbar-header .dropdown .show.header-item {
-    background-color: #f8f9fa; }
+    background-color: #dee2e6; }
 
 .navbar-brand-box {
   padding: 0 1.5rem;
   width: 250px;
-  background: #ffffff;
+  background: #dee2e6;
   border-right: 1px solid transparent; }
 
 .logo {
@@ -119,11 +119,11 @@ body[data-layout-mode="dark"] .layout-mode-light {
   height: 70px;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  color: #555b6d;
+  color: black;
   border: 0;
   border-radius: 0px; }
   .header-item:hover {
-    color: #555b6d; }
+    color: black; }
 
 .header-profile-user {
   height: 36px;
@@ -535,26 +535,26 @@ body[data-layout-mode="dark"] .right-bar {
   font-weight: 500; }
 
 .mm-active > a {
-  color: #1c84ee !important; }
+  color: black !important; }
   .mm-active > a i {
-    color: #1c84ee !important; }
+    color: black !important; }
   .mm-active > a svg {
-    color: #1c84ee !important; }
+    color: black !important; }
 
 .mm-active .active {
-  color: #1c84ee !important; }
+  color: black !important; }
   .mm-active .active i {
-    color: #1c84ee !important; }
+    color: black !important; }
   .mm-active .active svg {
-    color: #1c84ee !important; }
+    color: black !important; }
 
 .mm-active > i {
-  color: #1c84ee !important; }
+  color: black !important; }
 
 .sidebar-alert {
   background-color: rgba(28, 132, 238, 0.1) !important; }
   .sidebar-alert .alertcard-title {
-    color: #1c84ee; }
+    color: black; }
 
 @media (max-width: 992px) {
   .vertical-menu {
@@ -3776,7 +3776,7 @@ body[data-layout-mode="dark"] .jvectormap-label {
     z-index: 1; }
 
 .auth-bg {
-  background-image: url("../../images/login.jpg");
+  background-image: url("../../images/rtech-background.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }

@@ -2,7 +2,7 @@
 return [
     'adminEmail' => 'admin@rtechsa.com',
     'contactEmail' => 'info@rtechsa.com',
-    'websiteEmail' => 'info@rtechsa.com',
+    'websiteEmail' => 'admin@rtechsa.com',
     'siteURL' => 'rtechsa.com/test',
     'alternateURL' => 'www.rtechsa.com/test',
     'siteName' => 'Relevant Technologies',

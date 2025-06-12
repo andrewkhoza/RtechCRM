@@ -1,5 +1,6 @@
 <?php
 $user = \common\models\User::findOne(['id' => Yii::$app->user->id]);
+$userInfo = \app\models\UserInfo::findOne(['id' => Yii::$app->user->id]);
     
 ?>
 <div class="vertical-menu">
@@ -14,20 +15,13 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->id]);
                             
 
                         <?php if(Yii::$app->user->identity->role == 10){ ?>
+
                             <li>
                                 <a href="<?= \Yii::$app->request->baseurl ?>/admin/dashboard">
                                     <i data-feather="home"></i>
-                                    <!--<span class="badge rounded-pill bg-soft-success text-success float-end">9+</span>-->
-                                    <span data-key="t-dashboard">Dashboard </span>
+                                    <span data-key="t-dashboard">Admin Dashboard </span>
                                 </a>
-                            </li>
-                            <!-- <li>
-                                <a href="<?= \Yii::$app->request->baseurl ?>/admin/profile">
-                                    <i data-feather="settings"></i>
-                                    <span class="badge rounded-pill bg-soft-success text-success float-end">9+</span>
-                                    <span data-key="t-dashboard">Profile Settings </span>
-                                </a>
-                            </li>                            -->
+                            </li>                         
                             <li>
                                 <a  href="javascript: void(0);" class="has-arrow">
                                 <i data-feather="users"></i>
@@ -65,11 +59,23 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->id]);
                             </li>                                               
                         <?php }else if(Yii::$app->user->identity->role == 20){ ?>
                             <li>
-                                <a href="<?= \Yii::$app->request->baseurl ?>/managers/index">
+                                <a href="<?= \Yii::$app->request->baseurl ?>/managers/dashboard">
                                     <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Dashboard </span>
+                                    <span data-key="t-dashboard">Manager Dashboard </span>
                                 </a>
                             </li>
+                            <li>
+                                <a  href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="users"></i>
+                                    <span data-key="t-dashboard">Accounts</span>
+                                </a>
+                                
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="<?= \Yii::$app->request->baseurl ?>/managers/technicians-index" key="t-admin-administration">Technicians </a></li>
+                                    <li><a href="<?= \Yii::$app->request->baseurl ?>/managers/front-desk-index" key="t-admin-operations">Front Desk </a></li>
+                                    <li><a href="<?= \Yii::$app->request->baseurl ?>/managers/sales-index" key="t-admin-operations">Sales</a></li>
+                                </ul>
+                            </li> 
                             <li>
                                 <a href="<?= \Yii::$app->request->baseUrl ?>/write-off/index">
                                     <i data-feather="alert-triangle"></i>
@@ -91,12 +97,12 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->id]);
                             <li>
                                 <a href="<?= \Yii::$app->request->baseurl ?>/technicians/dashboard">
                                     <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Dashboard </span>
+                                    <span data-key="t-dashboard">Technician Dashboard </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
-                                <i class="fas fa-book" style="font-size: 1rem;"></i>
+                                    <i data-feather="book-open"></i>
                                 <span data-key="t-dashboard">Device Management</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -126,12 +132,12 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->id]);
                             <li>
                                 <a href="<?= \Yii::$app->request->baseurl ?>/front-desk/dashboard">
                                     <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Dashboard </span>
+                                    <span data-key="t-dashboard">Front Desk Dashboard </span>
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript: void(0);" class="has-arrow">
-                                <i class="fas fa-book" style="font-size: 1rem;"></i>
+                                <i data-feather="book-open"></i>
                                 <span data-key="t-dashboard">Device Management</span>
                                 </a>
                                 <ul class="sub-menu" aria-expanded="false">
@@ -164,7 +170,7 @@ $user = \common\models\User::findOne(['id' => Yii::$app->user->id]);
                             <li>
                                 <a href="<?= \Yii::$app->request->baseurl ?>/sales/index">
                                     <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Dashboard </span>
+                                    <span data-key="t-dashboard">Sales Dashboard </span>
                                 </a>
                             </li>
                             <li>

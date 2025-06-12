@@ -25,9 +25,7 @@ class SiteController extends Controller
             $user = Yii::$app->user;
             if ($user->identity->role == 10) { //admin
                 $rules = ['index'];
-            } else  if ($user->identity->role == 30){//company
-                $rules = [''];
-            } else {
+            }else {
                 $rules = [''];
             }
         } else {
@@ -138,10 +136,7 @@ class SiteController extends Controller
                     return $this->redirect(['/admin/dashboard']);
                 }else  if (Yii::$app->user->identity->role == 20){
                     return $this->redirect(['/managers/dashboard']);
-                }else if (Yii::$app->user->identity->role == 30){  
-                    // print_r('<pre>');                      
-                    // print_r('dead');
-                    // die;                      
+                }else if (Yii::$app->user->identity->role == 30){                                          
                     return $this->redirect(['/technicians/dashboard']);
                 }else if (Yii::$app->user->identity->role == 40){                        
                     return $this->redirect(['/front-desk/dashboard']);
@@ -168,9 +163,9 @@ class SiteController extends Controller
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
-                //Yii::$app->getSession()->setFlash('success', 'A link has been seccessfully sent to your email address.');
-                /*$email = new \frontend\models\Mails();
-                $return = $email->sendEmail(28, $model->id);*/
+                Yii::$app->getSession()->setFlash('success', 'A link has been seccessfully sent to your email address.');
+                $email = new \frontend\models\Mails();
+                $return = $email->sendEmail(28, $model->id);
                 return $this->redirect(['reset_password/requestPasswordResetToken']);
             } else {
                 Yii::$app->getSession()->setFlash('warning', 'Sorry, we are unable to reset password for email provided.');

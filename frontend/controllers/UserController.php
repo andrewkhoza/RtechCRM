@@ -141,7 +141,7 @@ class UserController extends Controller
                         
                         if($userinfo->pass_changed == 0){
                             $userinfo->scenario = 'FirstTimeLogin';
-                            $userinfo->pass_changed = 1;
+                            // $userinfo->pass_changed = 1;
                             $userinfo->save(false);
                             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
                             return $this->redirect(['index']);
@@ -162,7 +162,7 @@ class UserController extends Controller
                     
                     if($userinfo->pass_changed == 0){
                         $userinfo->scenario = 'FirstTimeLogin';
-                        $userinfo->pass_changed = 1;
+                        // $userinfo->pass_changed = 1;
                         $userinfo->save(false);
                         Yii::$app->getSession()->setFlash('success', 'New password was saved.');
                         return $this->redirect(['index']);
